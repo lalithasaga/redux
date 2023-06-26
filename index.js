@@ -1,16 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {Provider} from 'react-redux';
-import './index.css';
-import App from './App';
-import store from './store/index';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <Provider store= {store}>
-    <App />
-  </Provider>
-);
+import {createStore} from'redux';
 
 
 
+const counterReducer = (state= {counter: 0},action) => {
+    if(action.type === 'increment') {
+        return {
+            counter: state.counter + 1,
+        };
+    }
+     if (action.type === 'decrement') {
+        return {
+            counter :state.counter - 1 ,
+     };
+    
+}
+
+ return state;
+};
+
+const store = createStore(counterReducer);
+
+
+
+
+export default store;
